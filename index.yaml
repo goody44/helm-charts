@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   newrelic-infrastructure:
   - apiVersion: v1
-    appVersion: 1.26.5
-    created: "2020-11-09T20:29:58.053489707Z"
+    appVersion: 1.26.6
+    created: "2020-11-18T20:04:04.59708091Z"
     description: A Helm chart to deploy the New Relic Infrastructure Agent as a DaemonSet
-    digest: ec2911cbae70121a3cb79dde606a67e75b7d88464955fb69ceadaaa13ecd7a34
+    digest: a2690683b27def8d56ec75c44519f33234f99836ec65f343b68e5a815e59696e
     home: https://hub.docker.com/r/newrelic/infrastructure-k8s/
     icon: https://newrelic.com/assets/newrelic/source/NewRelic-logo-square.svg
     keywords:
@@ -22,16 +22,17 @@ entries:
     - name: jorik
     - name: alejandrodnm
     - name: rk295
+    - name: bpschmitt
     name: newrelic-infrastructure
     urls:
-    - https://github.com/goody44/helm-charts/releases/download/newrelic-infrastructure-1.5.5/newrelic-infrastructure-1.5.5.tgz
-    version: 1.5.5
+    - https://github.com/goody44/helm-charts/releases/download/newrelic-infrastructure-1.6.3/newrelic-infrastructure-1.6.3.tgz
+    version: 1.6.3
   newrelic-logging:
   - apiVersion: v1
-    appVersion: 1.3.0
-    created: "2020-11-09T20:29:58.266948639Z"
+    appVersion: 1.4.3
+    created: "2020-11-18T20:04:04.73275534Z"
     description: A Helm chart to deploy New Relic Kubernetes Logging as a DaemonSet
-    digest: dbeb10b1a7aac66fc274e45f46fe61139788895417f4d5cf1f75edd4fbd95439
+    digest: 8b5b0474ffcf7289ffac60c4115647eaf30da3ea86748f0166391d5f00606bb4
     home: https://github.com/newrelic/kubernetes-logging
     icon: https://newrelic.com/assets/newrelic/source/NewRelic-logo-square.svg
     keywords:
@@ -39,23 +40,22 @@ entries:
     - newrelic
     maintainers:
     - email: logging-team@newrelic.com
-      name: bmcfeely
+      name: jsubirat
     - name: matildasmeds
     - name: tejunior
-    - name: jsubirat
     name: newrelic-logging
     urls:
-    - https://github.com/goody44/helm-charts/releases/download/newrelic-logging-1.2.4/newrelic-logging-1.2.4.tgz
-    version: 1.2.4
+    - https://github.com/goody44/helm-charts/releases/download/newrelic-logging-1.3.1/newrelic-logging-1.3.1.tgz
+    version: 1.3.1
   nri-bundle:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-11-09T20:29:58.560374258Z"
+    created: "2020-11-18T20:04:04.910102114Z"
     dependencies:
     - condition: infrastructure.enabled
       name: newrelic-infrastructure
       repository: file://../newrelic-infrastructure
-      version: 1.5.4
+      version: 1.6.2
     - condition: prometheus.enabled
       name: nri-prometheus
       repository: file://../nri-prometheus
@@ -71,13 +71,13 @@ entries:
     - condition: kubeEvents.enabled
       name: nri-kube-events
       repository: file://../nri-kube-events
-      version: 1.3.1
+      version: 1.3.4
     - condition: logging.enabled
       name: newrelic-logging
       repository: file://../newrelic-logging
-      version: 1.2.3
+      version: 1.3.1
     description: A Helm chart to deploy New Relic integrations bundled together
-    digest: 2c616f3c3a702030465ee9c56a6df38212481baba22732a904ec4862e6b5b3e9
+    digest: 78e2da1671ab7e1f4d54d3b58b24cb8a81a32fff564c9e38f2799d25258d9296
     home: https://github.com/newrelic/helm-charts
     icon: https://newrelic.com/assets/newrelic/source/NewRelic-logo-square.svg
     maintainers:
@@ -85,6 +85,47 @@ entries:
     - name: jorik
     name: nri-bundle
     urls:
-    - https://github.com/goody44/helm-charts/releases/download/nri-bundle-1.10.1/nri-bundle-1.10.1.tgz
-    version: 1.10.1
-generated: "2020-11-09T20:29:57.662823711Z"
+    - https://github.com/goody44/helm-charts/releases/download/nri-bundle-1.10.3/nri-bundle-1.10.3.tgz
+    version: 1.10.3
+  nri-kube-events:
+  - apiVersion: v1
+    appVersion: 1.3.0
+    created: "2020-11-18T20:04:05.044324197Z"
+    description: A Helm chart to deploy the New Relic Kube Events
+    digest: f0330b2bbb8439fa17f30c545b78f3bea2bf900d27bda54b0d0e3ddbc63b13df
+    home: https://docs.newrelic.com/docs/integrations/kubernetes-integration/kubernetes-events/install-kubernetes-events-integration
+    icon: https://newrelic.com/assets/newrelic/source/NewRelic-logo-square.svg
+    keywords:
+    - events
+    - newrelic
+    - monitoring
+    maintainers:
+    - name: douglascamata
+    - name: jorik
+    - name: bpschmitt
+    name: nri-kube-events
+    urls:
+    - https://github.com/goody44/helm-charts/releases/download/nri-kube-events-1.3.4/nri-kube-events-1.3.4.tgz
+    version: 1.3.4
+  synthetics-minion:
+  - apiVersion: v2
+    appVersion: 3.0.28
+    created: "2020-11-18T20:04:05.18631099Z"
+    description: New Relic Synthetics Containerized Private Minion (CPM)
+    digest: 0a6ae163d106ac03a22e5c33a8638fc1712596363f66cd92652185e7a165b9ac
+    home: https://github.com/orgs/newrelic/teams/proactive-monitoring
+    keywords:
+    - synthetics
+    - synthetics-minion
+    - newrelic
+    maintainers:
+    - email: team_proactive-monitoring@newrelic.com
+      name: cleon-nr
+    - name: Philip-R-Beckwith
+    - name: sshah-nr
+    name: synthetics-minion
+    type: application
+    urls:
+    - https://github.com/goody44/helm-charts/releases/download/synthetics-minion-1.0.17/synthetics-minion-1.0.17.tgz
+    version: 1.0.17
+generated: "2020-11-18T20:04:04.389810652Z"
